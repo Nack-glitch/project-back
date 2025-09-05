@@ -4,8 +4,7 @@
   "description": "Backend for Agri-Market app with Express, MongoDB, and JWT authentication",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
-    "dev": "nodemon server.js"
+    "start": "node server.js"
   },
   "keywords": [
     "agri-market",
