@@ -2,7 +2,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
 import { PORT, MONGO_URI } from './config.js';
-import productRoutes from './routes/productRoutes.js'; // Correct file name
+import productRoutes from './routes/productRoutes.js';
 
 const app = express();
 
@@ -24,6 +24,4 @@ mongoose.connect(MONGO_URI)
   .catch(err => console.error('❌ MongoDB connection error:', err));
 
 // Start server
-app.listen(PORT, () => {
-  console.log(`✅ Server running on port ${PORT}`);
-});
+app.listen(PORT, () => console.log(`✅ Server running on port ${PORT}`));

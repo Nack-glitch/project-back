@@ -1,16 +1,15 @@
-const express = require("express");
+import express from "express";
+import bcrypt from "bcryptjs";
+import jwt from "jsonwebtoken";
+import User from "../models/User.js";
+
 const router = express.Router();
-const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken");
-const User = require("../models/User");
 
 // --- Register ---
 router.post("/register", async (req, res) => {
   const { name, phoneNumber, password, role, farmName, location } = req.body;
-
-  if (!name || !phoneNumber || !password || !role) {
+  if (!name || !phoneNumber || !password || !role)
     return res.status(400).json({ status: false, message: "All fields are required" });
-  }
 
   try {
     const existingUser = await User.findOne({ phoneNumber });
@@ -36,14 +35,9 @@ router.post("/register", async (req, res) => {
       { expiresIn: "7d" }
     );
 
-    res.status(201).json({
-      status: true,
-      message: "You are registered successfully",
-      user,
-      token,
-    });
+    res.status(201).json({ status: true, message: "Registered successfully", user, token });
   } catch (err) {
-    console.error("Register Error:", err);
+    console.error(err);
     res.status(500).json({ status: false, message: "Server error", error: err.message });
   }
 });
@@ -69,16 +63,11 @@ router.post("/login", async (req, res) => {
       { expiresIn: "7d" }
     );
 
-    res.status(200).json({
-      status: true,
-      message: "Login successful",
-      user,
-      token,
-    });
+    res.status(200).json({ status: true, message: "Login successful", user, token });
   } catch (err) {
-    console.error("Login Error:", err);
+    console.error(err);
     res.status(500).json({ status: false, message: "Server error", error: err.message });
   }
 });
 
-module.exports = router;
+export default router;
