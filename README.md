@@ -1,1 +1,2 @@
-# project-back
+# AgriMarket Backend 🚀
+The AgriMarket backend is built with Node.js, Express, and MongoDB, providing a robust and scalable server-side architecture. It handles user authentication 🔑, role-based access for farmers and buyers 🚜🛒, and product management 📦, ensuring smooth communication between frontend and database. Secure API endpoints, data validation, and efficient request handling make the platform reliable and high-performing for a modern agricultural marketplace.
